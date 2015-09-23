@@ -1,0 +1,450 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+
+
+  <meta name="keywords" content="Hexo,next" />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="勇敢的少年,快去创造奇迹">
+<meta property="og:url" content="https:sharpcode.github.com/index.html">
+<meta property="og:site_name" content="勇敢的少年,快去创造奇迹">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="勇敢的少年,快去创造奇迹">
+<meta name="twitter:description">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'hide'
+  };
+</script>
+
+  <title> 勇敢的少年,快去创造奇迹 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column 
+   page-home 
+">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">勇敢的少年,快去创造奇迹</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+  <section id="posts" class="posts-expand">
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/09/23/screen2iOS/" itemprop="url">
+                简单实现MAC屏幕分享到iOS设备上
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-09-23T17:23:21+08:00" content="2015-09-23">
+            2015-09-23
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>国外有款Duet的软件实现了用iPad或者iPhone作为另外一个显示器的功能，并且还有触摸回传功能，还支持扩展屏幕。本文将简单讲解如何实现屏幕复制分享到iOS设备上。</p>
+<h3 id="MAC端使用AVCaptureSession抓取屏幕">MAC端使用AVCaptureSession抓取屏幕</h3><p>AVFounation是苹果的音视频框架，提供很多强大的API的供开发者使用。框架中有一个AVCaptureSession的类，这个类是用来捕获音视频的。</p>
+<p>AVCaptureSession需要设置原始数据来源(input)，设置处理后的数据的输出(output)。</p>
+<p>我们要捕获的MAC屏幕的画面，使用AVCaptureScreenInput作为input。</p>
+<p>然后设置AVCaptureVideoDataOutput为ouput告诉AVCaptureSession以内存的形式给我捕获的数据，而不是使用AVCaptueFileOutput(将捕获的数据的写入文件中)。</p>
+<p>AVCaptureVideoDataOutput非常好用，只要在VideoSettings中设置AVVideoCodecKey为AVVideoCodecH264，就可以让AVCaptureVideoDataOutput自动帮你将原始的视频编码为H264。</p>
+<p>同时为了实时性，设置AVVideoAllowFrameReorderingKey:@NO，禁用B帧。</p>
+<p>以下是配置AVCaptureSession的主要代码</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">      captureSession = [[<span class="built_in">AVCaptureSession</span> alloc] init];</span><br><span class="line">      <span class="built_in">AVCaptureScreenInput</span> *screenInput = [[<span class="built_in">AVCaptureScreenInput</span> alloc] initWithDisplayID:<span class="built_in">CGMainDisplayID</span>()];</span><br><span class="line">screenInput<span class="variable">.scaleFactor</span> = <span class="number">0.5</span>; <span class="comment">// 个人觉得retain 分辨率太高了，在iPad显示取一半就好</span></span><br><span class="line">      screenInput<span class="variable">.minFrameDuration</span> = CMTimeMake(<span class="number">1</span>, <span class="number">30</span>); <span class="comment">//最小帧数</span></span><br><span class="line">      [captureSession addInput:screenInput];</span><br><span class="line">      <span class="built_in">AVCaptureVideoDataOutput</span> *dataOut = [[<span class="built_in">AVCaptureVideoDataOutput</span> alloc] init];</span><br><span class="line">      [dataOut setAlwaysDiscardsLateVideoFrames:<span class="literal">YES</span>];</span><br><span class="line">      [dataOut  setSampleBufferDelegate:<span class="keyword">self</span> queue:dispatch_get_global_queue(<span class="number">0</span>, <span class="number">0</span>)];</span><br><span class="line">      <span class="built_in">AVCaptureConnection</span> *connection= [dataOut connectionWithMediaType:<span class="built_in">AVMediaTypeVideo</span>];</span><br><span class="line">      [connection setVideoMaxFrameDuration:CMTimeMake(<span class="number">1</span>, <span class="number">60</span>)]; <span class="comment">//最大帧数</span></span><br><span class="line">      [dataOut setVideoSettings:@&#123;<span class="built_in">AVVideoCodecKey</span>:<span class="built_in">AVVideoCodecH264</span>,                               	<span class="built_in">AVVideoCompressionPropertiesKey</span>:@&#123; <span class="built_in">AVVideoAllowFrameReorderingKey</span>:@NO</span><br><span class="line">                                                                    &#125;&#125;];                                       </span><br><span class="line">      [captureSession addOutput:dataOut];</span><br></pre></td></tr></table></figure>
+<p>然后调用    </p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">[captureSession startRunning]</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<p>就可以在AVCaptureVideoDataOutput的代理方法中得到输出的数据CMSampleBuffer</p>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="pp">- <span class="params">(void)</span>captureOutput:<span class="params">(<span class="variable">AVCaptureOutput</span> *)</span>captureOutput didOutputSampleBuffer:<span class="params">(<span class="variable">CMSampleBufferRef</span>)</span>sampleBuffer fromConnection:<span class="params">(<span class="variable">AVCaptureConnection</span> *)</span>connection;</span></span><br></pre></td></tr></table></figure>
+<p>CMSampleBuffer是个什么东西呢，头文件的解释是</p>
+<blockquote>
+<p>a CF object containing zero or more compressed (or uncompressed) samples of a particular media type (audio, video, muxed, etc)</p>
+</blockquote>
+<p>大概意思是Core Media封装媒体样本的一种格式，可以是压缩的，也可以非压缩的数据。更详细的介绍后文再讲。</p>
+<h3 id="iOS端使用AVSampleBufferDisplayLayer解码显示">iOS端使用AVSampleBufferDisplayLayer解码显示</h3><p>其实不管CMSampleBuffer是什么东西，强大的AVFounation中有个叫AVSampleBufferDisplayLayer的类。<br>只要你把CMSampleBuffer给它，调用</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">-</span> (<span class="tag">void</span>)<span class="rule"><span class="attribute">enqueueSampleBuffer</span>:<span class="value">(CMSampleBufferRef)sampleBuffer</span></span>;</span><br></pre></td></tr></table></figure>
+<p>它就可以把显示视频。</p>
+<p>AVSampleBufferDisplayLayer的头文件解释是</p>
+<blockquote>
+<p>AVSampleBufferDisplayLayer is a subclass of CALayer that can decompress and display compressed or uncompressed video frames</p>
+</blockquote>
+<h3 id="如何将MAC端的CMSampleBuffer发送到iOS中">如何将MAC端的CMSampleBuffer发送到iOS中</h3><p>现在的问题是如何把CMSampleBuffer从MAC端发送到iOS端。思路就是把CMSampleBuffer分解为基本类型，<br>然后发送到iOS端，然后再iOS端新建一个CMSampleBuffer。</p>
+<p>好吧，现在开始看看CMSampleBuffer内部结构。<br><img src="http://ww2.sinaimg.cn/large/88011fc4gw1ewc6inml43j20jk0dhq4o.jpg" alt="CMSampleBuffer"></p>
+<p>从图可知CMSampleBuffer分为Compressed Video Frame 和 Uncompressed Raster Image两种，我们在AVCaptureVideoDataOutput设置了输出H264编码，所以得到是compressed Video Frame 类型的CMSampleBuffer。压缩的CMSampleBuffer的包括：</p>
+<ol>
+<li>CMTime(时间戳)</li>
+<li>CMVideoFormatDesc(视频格式描述)</li>
+<li>CMBlockBuffer(编码后的视频数据，在这里是H264的数据)。</li>
+</ol>
+<p>CMTime 是结构体，直接发送就好了</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">typedef struct</span><br><span class="line">&#123;</span><br><span class="line">	CMTime duration<span class="comment">;					</span></span><br><span class="line">	CMTime presentationTimeStamp<span class="comment">;		</span></span><br><span class="line">	CMTime decodeTimeStamp<span class="comment">;			</span></span><br><span class="line">&#125; CMSampleTimingInfo<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<p>CMBlockBuffer的话，调用CMBlockBufferGetDataPointer就可以拿到字节流数据</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CMBlockBufferGetDataPointer<span class="list">(<span class="keyword">CMSampleBufferGetDataBuffer</span><span class="list">(<span class="keyword">sampleBuffer</span>)</span>, <span class="number">0</span>, NULL,<span class="keyword">&amp;totalLength</span>, <span class="keyword">&amp;dataPointer</span>)</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<p>CMVideoFormatDesc的话就更复杂了</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">OSStatus <span class="function">CMVideoFormatDescriptionCreate</span>(</span><br><span class="line">	CFAllocatorRef CM_NULLABLE allocator,		</span><br><span class="line">	CMVideoCodecType codecType,	</span><br><span class="line">	int32_t <span class="attribute">width</span>,								</span><br><span class="line">	int32_t <span class="attribute">height</span>,								</span><br><span class="line">	CFDictionaryRef CM_NULLABLE extensions,</span><br><span class="line">	CMVideoFormatDescriptionRef *outDesc)</span><br></pre></td></tr></table></figure>
+<p>由CMVideoFormatDescriptionCreate函数可知，CMVideoFormatDesc可分解为</p>
+<ol>
+<li>codecType(编码类型)</li>
+<li>width分辨率的高</li>
+<li>height分辨率的宽</li>
+<li>extensions字典。</li>
+</ol>
+<p>width和height是基本类型。</p>
+<p>CMVideoCodecType其实就是UInt32，也是是基本类型。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="built_in">UInt32</span>	FourCharCode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> FourCharCode CMVideoCodecType;</span><br></pre></td></tr></table></figure>
+<p>最后就剩下的是字典类型extensions，要传输字典类型很自然就想到了通过JSON来传。NSJSONSerialization将字典转成NSData的时候报错了，原来字典中的key为SampleDescriptionExtensionAtoms对应的value中有NSData数据，NSJSONSerialization并不能序列化这样的字典。</p>
+<p>SampleDescriptionExtensionAtoms在<a href="http://objccn.io/issue-23-3/" target="_blank" rel="external">objccn</a>有介绍，是MPEG-4 Part 2或H.264这样的先进视频编解码器所需要的元数据。此外，它可能包含元数据来通过 CVPixelAspectRatio 键处理非方形像素。</p>
+<p>虽然不知道什么意思，但感觉很高端，很重要的样子。既然字典中不能有NSData，只能把这个key-value对从这个字典中remove，然后单独传这个NSData。然后在iOS端从新组装这个extensions字典。</p>
+<p>最终我把CMSampleBuffer分解为如VideoSampleFrame结构体所示的结构</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">typedef struct VideoSampleFrame &#123;</span><br><span class="line">    uint32_t length<span class="comment">;</span></span><br><span class="line">    uint32_t videoDescExtsLength<span class="comment">;</span></span><br><span class="line">    uint32_t sampleDescriptionExtensionAtomsDataLength<span class="comment">;</span></span><br><span class="line">    uint32_t H264DataLength<span class="comment">;</span></span><br><span class="line">    CMSampleTimingInfo time<span class="comment">;</span></span><br><span class="line">    CMVideoCodecType codecType<span class="comment">;</span></span><br><span class="line">    CMVideoDimensions videoDimensions<span class="comment">;</span></span><br><span class="line">    uint8_t data[0]<span class="comment">;</span></span><br><span class="line">&#125; VideoSampleFrame<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>length是VideoSampleFrame的总长度</li>
+<li>videoDescExtsLength是CMVideoFormatDesc中extensions(去除了SampleDescriptionExtensionAtoms)字典转成NSData的长度</li>
+<li>sampleDescriptionExtensionAtomsDataLength是SampleDescriptionExtensionAtoms对应的解码器所需要的元数据的长度</li>
+<li>time是时间戳</li>
+<li>codecType是编码类型</li>
+<li>videoDimensions是视频分辨率</li>
+<li>data是 extensions序列化的数据 + sampleDescriptionExtensionAtoms的元数据 + H264数据</li>
+</ul>
+<p>MAC端处理SampleBuffer的代码如下</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">CFRetain(sampleBuffer)<span class="comment">;</span></span><br><span class="line">    </span><br><span class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</span><br><span class="line">        </span><br><span class="line">        char *dataPointer<span class="comment">;</span></span><br><span class="line">        size_t totalLength<span class="comment">;</span></span><br><span class="line">        CMBlockBufferGetDataPointer(CMSampleBufferGetDataBuffer(sampleBuffer), 0, NULL, &amp;totalLength, &amp;dataPointer)<span class="comment">;</span></span><br><span class="line">        </span><br><span class="line">        CMSampleTimingInfo time<span class="comment">;</span></span><br><span class="line">        </span><br><span class="line">        CMSampleBufferGetSampleTimingInfo(sampleBuffer, 0, &amp;time)<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">        CMFormatDescriptionRef formatDesc = CMSampleBufferGetFormatDescription(sampleBuffer)<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">        CMVideoCodecType codecType= CMVideoFormatDescriptionGetCodecType(formatDesc)<span class="comment">;</span></span><br><span class="line">        CMVideoDimensions dimensions = CMVideoFormatDescriptionGetDimensions(formatDesc)<span class="comment">;</span></span><br><span class="line">        CFDictionaryRef extensions = CMFormatDescriptionGetExtensions(formatDesc)<span class="comment">;</span></span><br><span class="line">        </span><br><span class="line">        NSData *videoFormateExtentisonsData = nil<span class="comment">;</span></span><br><span class="line">        NSDictionary *dict = (__bridge id)(extensions)<span class="comment">;</span></span><br><span class="line">        </span><br><span class="line">        NSMutableDictionary *newDict = [NSMutableDictionary dictionary]<span class="comment">;</span></span><br><span class="line">        </span><br><span class="line">        for (NSString *key in  dict.allKeys) &#123;</span><br><span class="line">            </span><br><span class="line">            [newDict setObject:[dict objectForKey:key] forKey:key]<span class="comment">;</span></span><br><span class="line">        &#125;</span><br><span class="line">        [newDict removeObjectForKey:@"SampleDescriptionExtensionAtoms"]<span class="comment">;</span></span><br><span class="line">       </span><br><span class="line">        </span><br><span class="line">        NSData *sampleDescriptionExtensionAtomsData = dict[@"SampleDescriptionExtensionAtoms"][@"avcC"]<span class="comment">;</span></span><br><span class="line">        </span><br><span class="line">        NSUInteger sampleDescriptionExtensionAtomsDataLength = [sampleDescriptionExtensionAtomsData length]<span class="comment">;</span></span><br><span class="line">        </span><br><span class="line">        videoFormateExtentisonsData = [NSJSONSerialization dataWithJSONObject:newDict options:kNilOptions error:nil]<span class="comment">;</span></span><br><span class="line">        </span><br><span class="line">        NSUInteger  vFormateExtLength = [videoFormateExtentisonsData length]<span class="comment">;</span></span><br><span class="line">        </span><br><span class="line">        size_t frameLength = sizeof(VideoSampleFrame) + [videoFormateExtentisonsData length] + sampleDescriptionExtensionAtomsDataLength + totalLength<span class="comment">;</span></span><br><span class="line">        </span><br><span class="line">        VideoSampleFrame * videoFrame = malloc(frameLength)<span class="comment">;</span></span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        videoFrame-&gt;length = (uint32_t)frameLength<span class="comment">;</span></span><br><span class="line">        videoFrame-&gt;videoDescExtsLength = (uint32_t)vFormateExtLength<span class="comment">;</span></span><br><span class="line">        videoFrame-&gt;sampleDescriptionExtensionAtomsDataLength = (uint32_t)sampleDescriptionExtensionAtomsDataLength<span class="comment">;</span></span><br><span class="line">        videoFrame-&gt;H264DataLength = (uint32_t)totalLength<span class="comment">;</span></span><br><span class="line">        videoFrame-&gt;time   = time<span class="comment">;</span></span><br><span class="line">        videoFrame-&gt;codecType = codecType<span class="comment">;</span></span><br><span class="line">        videoFrame-&gt;videoDimensions = dimensions<span class="comment">;</span></span><br><span class="line">        memcpy(videoFrame-&gt;data, [videoFormateExtentisonsData bytes], [videoFormateExtentisonsData length])<span class="comment">;</span></span><br><span class="line">        memcpy(videoFrame-&gt;data + vFormateExtLength, [sampleDescriptionExtensionAtomsData bytes], sampleDescriptionExtensionAtomsDataLength)<span class="comment">;</span></span><br><span class="line">        memcpy(videoFrame-&gt;data + vFormateExtLength + sampleDescriptionExtensionAtomsDataLength , dataPointer, totalLength)<span class="comment">;</span></span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        CFRelease(sampleBuffer)<span class="comment">;</span></span><br><span class="line">        dispatch_data_t  sendData = dispatch_data_create(videoFrame, frameLength, NULL, ^&#123;</span><br><span class="line">           free(videoFrame)<span class="comment">;</span></span><br><span class="line">        &#125;)<span class="comment">;</span></span><br><span class="line">        </span><br><span class="line">        [sender sendFrameOfType:ASFrameTypeVideo tag:0 withPayload:sendData]<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<h3 id="MAC与iOS的链路">MAC与iOS的链路</h3><p>发送我使用的<a href="https://github.com/rsms/peertalk" target="_blank" rel="external">peertalk</a>开源库，使用USB从MAC传送数据到iOS上，具体使用方法看github介绍。跨设备传输数据，需要注意的一点就是大小端和字节对齐的问题。</p>
+<ul>
+<li><p>大小端问题：MAC的是CPU是X86属于小端，iOS是ARM平台，ARM平台是大小端可配置。网上得知，iOS也是是小端。所以就没有做处理。</p>
+</li>
+<li><p>字节对齐的问题：VideoSampleFrame结构体中并没有这种问题。</p>
+</li>
+</ul>
+<h3 id="iOS端拼接数据创建CMSampleBuffer">iOS端拼接数据创建CMSampleBuffer</h3><p>拼接就是拆的逆过程，主要代码如下：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">VideoSampleFrame *frame = payload<span class="variable">.data</span>; </span><br><span class="line">     uint32_t videoDescExtsLength = frame-&gt;videoDescExtsLength;</span><br><span class="line">     uint32_t sampleDescriptionExtensionAtomsDataLength = frame-&gt;sampleDescriptionExtensionAtomsDataLength;</span><br><span class="line">     </span><br><span class="line">     <span class="built_in">NSData</span> *data = [<span class="built_in">NSData</span> dataWithBytes:frame-&gt;data length:videoDescExtsLength];</span><br><span class="line">     </span><br><span class="line">     <span class="built_in">NSDictionary</span> *dict = [<span class="built_in">NSJSONSerialization</span> JSONObjectWithData:data options:<span class="number">0</span> error:<span class="literal">nil</span>];</span><br><span class="line">     </span><br><span class="line">     <span class="built_in">NSMutableDictionary</span> *newDict = [<span class="built_in">NSMutableDictionary</span> dictionary];</span><br><span class="line">     </span><br><span class="line">     <span class="keyword">for</span> (<span class="built_in">NSString</span> *key <span class="keyword">in</span> dict<span class="variable">.allKeys</span>) &#123;</span><br><span class="line">         [newDict setValue:dict[key] forKey:key];</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="built_in">NSData</span> *sampleDescriptionExtensionAtomsData = [<span class="built_in">NSData</span> dataWithBytes:frame-&gt;data + videoDescExtsLength length:sampleDescriptionExtensionAtomsDataLength];</span><br><span class="line">     </span><br><span class="line">     </span><br><span class="line">     [newDict setValue:@&#123;<span class="string">@"avcC"</span>:sampleDescriptionExtensionAtomsData&#125; forKey:<span class="string">@"SampleDescriptionExtensionAtoms"</span>];</span><br><span class="line">     </span><br><span class="line">     CMVideoCodecType codeType = frame-&gt;codecType;</span><br><span class="line">     CMVideoDimensions dimensions = frame-&gt;videoDimensions;</span><br><span class="line">     </span><br><span class="line">     CMVideoFormatDescriptionRef newDesc;</span><br><span class="line">     </span><br><span class="line">             </span><br><span class="line">     CMVideoFormatDescriptionCreate(<span class="literal">NULL</span>, codeType, dimensions<span class="variable">.width</span>, dimensions<span class="variable">.height</span>, (__bridge <span class="built_in">CFDictionaryRef</span>)(newDict), &amp;newDesc);</span><br><span class="line">     </span><br><span class="line">     CMSampleTimingInfo time = frame-&gt;time;</span><br><span class="line">     </span><br><span class="line">     CMBlockBufferRef block;</span><br><span class="line">     </span><br><span class="line">     CMBlockBufferCreateWithMemoryBlock(k<span class="built_in">CFAllocatorDefault</span>, frame-&gt;data + videoDescExtsLength + sampleDescriptionExtensionAtomsDataLength, frame-&gt;H264DataLength, k<span class="built_in">CFAllocatorDefault</span>, <span class="literal">NULL</span>, <span class="number">0</span>, frame-&gt;H264DataLength, <span class="number">0</span>, &amp;block);</span><br><span class="line"></span><br><span class="line">     </span><br><span class="line">     CMSampleBufferRef sample;</span><br><span class="line">     CMSampleBufferCreate(k<span class="built_in">CFAllocatorDefault</span>, block, <span class="literal">YES</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>, newDesc, <span class="number">1</span>, <span class="number">1</span>, &amp;time, <span class="number">0</span>, <span class="literal">NULL</span>, &amp;sample);</span><br><span class="line">     </span><br><span class="line">     </span><br><span class="line">     </span><br><span class="line">     <span class="built_in">CFArrayRef</span> attachments = CMSampleBufferGetSampleAttachmentsArray(sample, <span class="literal">YES</span>);</span><br><span class="line">     <span class="built_in">CFMutableDictionaryRef</span> d = (<span class="built_in">CFMutableDictionaryRef</span>)<span class="built_in">CFArrayGetValueAtIndex</span>(attachments, <span class="number">0</span>);</span><br><span class="line">     <span class="built_in">CFDictionarySetValue</span>(d, kCMSampleAttachmentKey_DisplayImmediately, k<span class="built_in">CFBooleanTrue</span>);</span><br><span class="line">     </span><br><span class="line">     [displayLayer enqueueSampleBuffer:sample];</span><br><span class="line">     </span><br><span class="line">     </span><br><span class="line">     <span class="built_in">CFRelease</span>(sample);</span><br><span class="line">     <span class="built_in">CFRelease</span>(newDesc);</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+ </div>
+
+        
+
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="http://tp1.sinaimg.cn/2281775044/180/5722839103/1" alt="sharpcode" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">sharpcode</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sharpcode</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
